@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namutek Logistics & Construction Limited | Premium Services</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Core Variables & Custom Styles --- */
+        :root {
+            --primary-color: #e9a617;
+            --secondary-color: #003366;
+            --accent-red: #e43212;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* --- Custom Navbar --- */
+        .navbar {
+            background: rgba(228, 50, 18, 0.95) !important; /* var(--accent-red) */
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand img {
+            max-height: 50px;
+            object-fit: contain;
+        }
+
+        .nav-link {
+            color: #ffffff !important;
+            font-weight: 600;
+            position: relative;
+            padding: 0.5rem 0;
+            margin: 0 10px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* --- Hero Section with Zoom-Out Animation --- */
+        .hero-container {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 51, 102, 0.7), rgba(0, 0, 0, 0.65)), url('image/photo 3.jpg') center/cover no-repeat;
+            z-index: 1;
+            /* Smooth Zoom Out Animation */
+            transform: scale(1.15);
+            animation: zoomOutEffect 15s ease-out forwards;
+        }
+
+        @keyframes zoomOutEffect {
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: #ffffff;
+            max-width: 800px;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .btn-custom-primary {
+            background-color: var(--primary-color);
+            color: #000000;
+            font-weight: 600;
+            border: none;
+            padding: 12px 30px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom-primary:hover {
+            background-color: #ffffff;
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        /* --- Section Header Adjustments --- */
+        .section-title h2 {
+            color: var(--secondary-color);
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* --- Cards & Components --- */
+        .service-card {
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            background: #ffffff;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: rgba(233, 166, 23, 0.3);
+        }
+
+        .catalog-card {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .catalog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+        }
+
+        .catalog-card img {
+            height: 250px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .catalog-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* --- Stats Banner --- */
+        .stats-banner {
+            background: linear-gradient(135deg, #f76503 0%, #e43212 100%);
+            color: #ffffff;
+        }
+
+        /* --- Contact Form --- */
+        .contact-container {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .form-control:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 0.25rem rgba(0, 51, 102, 0.15);
+        }
+
+        .btn-submit {
+            background-color: var(--secondary-color);
+            color: #ffffff;
+            font-weight: 600;
+            padding: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--accent-red);
+            color: #ffffff;
+        }
+
+        /* --- Floating WhatsApp Button --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #fff;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128c7e;
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        /* Custom animation utility classes */
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm py-3">
+            <div class="container">
+                <a class="navbar-brand" href="#home">
+                    <img src="image/PHOTO 9.png" alt="Namutek Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#catalog">Catalog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero-container" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-content fade-in-up">
+            <h1 class="display-4 fw-800 mb-3 text-uppercase">Welcome to Namutek Logistics & Construction Limited</h1>
+            <p class="fs-4 mb-4 text-uppercase tracking-wider font-light" style="letter-spacing: 2px;">Push and Hustle</p>
+            <a href="#catalog" class="btn btn-custom-primary btn-lg rounded-2">Browse Catalog</a>
+        </div>
+    </section>
+
+    <section id="about" class="py-5" style="margin-top: 40px; margin-bottom: 40px;">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2>About Us</h2>
+            </div>
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="overflow-hidden rounded-3 shadow">
+                        <img src="image/photo 6.jpg" class="img-fluid w-100 d-block transition-transform hover-scale" alt="Logistics Operations Center" style="transition: transform 0.3s ease;">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-text">
+                        <h3 class="h5 fw-bold text-uppercase text-primary-custom mb-3" style="color: var(--secondary-color)">Our Vision</h3>
+                        <p class="text-muted mb-4">To be the leading provider of safe and reliable goods transportation solutions, driving progress and prosperity in Zambia and beyond. We deliver safe, high-quality, and sustainable building projects that meet client expectations.</p>
+                        
+                        <h3 class="h5 fw-bold text-uppercase text-primary-custom mb-3" style="color: var(--secondary-color)">Our Mission</h3>
+                        <p class="text-muted mb-0">Our mission is to safely deliver goods to our customers, ensuring their operations run smoothly. We are committed to upholding the highest standards of safety, reliability, and professionalism in every aspect of our business, thereby contributing to the success and growth of our customers and communities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services py-5 bg-light" id="services">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2>Our Services</h2>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6 col-lg-5">
+                    <div class="service-card h-100 p-4 d-flex flex-column justify-content-between">
+                        <div>
+                            <h3 class="h4 fw-bold mb-3" style="color: var(--secondary-color)">Goods Transportation</h3>
+                            <p class="text-muted mb-4">Reliable, point-to-point commercial logistics and efficient heavy-load transportation services tailored to your operations supply pipeline.</p>
+                        </div>
+                        <img src="image/photo 2.jpg" class="img-fluid rounded shadow-sm w-100" style="height: 200px; object-fit: cover;" alt="Goods Transportation fleet">
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-5">
+                    <div class="service-card h-100 p-4 d-flex flex-column justify-content-between">
+                        <div>
+                            <h3 class="h4 fw-bold mb-3" style="color: var(--secondary-color)">Construction</h3>
+                            <p class="text-muted mb-4">Deliver safe, high-quality, and sustainable building projects that meet client expectations while ensuring efficiency, innovation, and long-term value.</p>
+                        </div>
+                        <img src="image/photo 1.1.jpg" class="img-fluid rounded shadow-sm w-100" style="height: 200px; object-fit: cover;" alt="Construction operations">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="catalog" class="py-5">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2>Our Catalog</h2>
+            </div>
+
+            <div class="row justify-content-center mb-5">
+                <div class="col-md-8 col-lg-6">
+                    <input type="text" id="searchBox" class="form-control form-control-lg rounded-pill px-4 shadow-sm bg-light" placeholder="Search operational fleet (e.g. Transportation 1)...">
+                </div>
+            </div>
+
+            <div class="row g-4" id="bookGrid">
+                <!-- Site 1 -->
+                <div class="col-sm-6 col-md-4 col-lg-3 book-item">
+                    <div class="catalog-card bg-white">
+                        <img src="image/photo.3.3.jpg" class="w-100" alt="Logistics Fleet Truck Type 1">
+                        <div class="p-3">
+                            <h4 class="h6 fw-bold mb-1" style="color: var(--secondary-color)">Site 1</h4>
+                            <p class="text-muted small mb-0">Project</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Site 2 -->
+                <div class="col-sm-6 col-md-4 col-lg-3 book-item">
+                    <div class="catalog-card bg-white">
+                        <img src="image/photo 2.2.jpg" class="w-100" alt="Logistics Fleet Truck Type 2">
+                        <div class="p-3">
+                            <h4 class="h6 fw-bold mb-1" style="color: var(--secondary-color)">Site 2</h4>
+                            <p class="text-muted small mb-0">Project</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Site 3 -->
+                <div class="col-sm-6 col-md-4 col-lg-3 book-item">
+                    <div class="catalog-card bg-white">
+                        <img src="image/photo 13.jpeg" class="w-100" alt="Logistics Fleet Truck Type 2">
+                        <div class="p-3">
+                            <h4 class="h6 fw-bold mb-1" style="color: var(--secondary-color)">Site 3</h4>
+                            <p class="text-muted small mb-0">Project</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Site 4 -->
+                <div class="col-sm-6 col-md-4 col-lg-3 book-item">
+                    <div class="catalog-card bg-white">
+                        <img src="image/photo12.jpeg" class="w-100" alt="Logistics Fleet Truck Type 2">
+                        <div class="p-3">
+                            <h4 class="h6 fw-bold mb-1" style="color: var(--secondary-color)">Site 4</h4>
+                            <p class="text-muted small mb-0">Project</p>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Truck 1 -->
+                <div class="col-sm-6 col-md-4 col-lg-3 book-item">
+                    <div class="catalog-card bg-white">
+                        <img src="image/photo 4.jpg" class="w-100" alt="Logistics Fleet Truck Type 3">
+                        <div class="p-3">
+                            <h4 class="h6 fw-bold mb-1" style="color: var(--secondary-color)">TRUCK 1</h4>
+                            <p class="text-muted small mb-0">TRANSPORTATION</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Truck 2 -->
+                <div class="col-sm-6 col-md-4 col-lg-3 book-item">
+                    <div class="catalog-card bg-white">
+                        <img src="image/photo 5.jpg" class="w-100" alt="Logistics Fleet Truck Type 4">
+                        <div class="p-3">
+                            <h4 class="h6 fw-bold mb-1" style="color: var(--secondary-color)">TRUCK 2</h4>
+                            <p class="text-muted small mb-0">TRANSPORTATION</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Truck 3 -->
+                <div class="col-sm-6 col-md-4 col-lg-3 book-item">
+                    <div class="catalog-card bg-white">
+                        <img src="image/photo.10.jpeg" class="w-100" alt="Logistics Fleet Truck Type 4">
+                        <div class="p-3">
+                            <h4 class="h6 fw-bold mb-1" style="color: var(--secondary-color)">TRUCK 3</h4>
+                            <p class="text-muted small mb-0">TRANSPORTATION</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Truck 4 -->
+                <div class="col-sm-6 col-md-4 col-lg-3 book-item">
+                    <div class="catalog-card bg-white">
+                        <img src="image/photo .14.png" class="w-100" alt="Logistics Fleet Truck Type 4">
+                        <div class="p-3">
+                            <h4 class="h6 fw-bold mb-1" style="color: var(--secondary-color)">TRUCK 4</h4>
+                            <p class="text-muted small mb-0">TRANSPORTATION</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-banner py-5">
+        <div class="container">
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <h2 class="display-5 fw-bold mb-1">100%</h2>
+                    <p class="text-uppercase small tracking-wide opacity-90 mb-0">Safe Delivery Rate</p>
+                </div>
+                <div class="col-md-4">
+                    <h2 class="display-5 fw-bold mb-1">24/7</h2>
+                    <p class="text-uppercase small tracking-wide opacity-90 mb-0">Support & Tracking</p>
+                </div>
+                <div class="col-md-4">
+                    <h2 class="display-5 fw-bold mb-1">10k+</h2>
+                    <p class="text-uppercase small tracking-wide opacity-90 mb-0">Tons Transported</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact py-5 bg-light" id="contact">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-7">
+                    <div class="contact-container p-4 p-md-5">
+                        <form id="contactForm" action="https://formsubmit.co/namuteklogistics@gmail.com" method="POST">
+                            <div class="mb-3">
+                                <input type="text" name="name" class="form-control form-control-lg fs-6" placeholder="Your Name" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" name="email" class="form-control form-control-lg fs-6" placeholder="Your Email" required>
+                            </div>
+                            <div class="mb-4">
+                                <textarea name="message" rows="6" class="form-control form-control-lg fs-6" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-submit w-100 rounded-3 btn-lg fs-6">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white-50 text-center py-4" style="border-top: 4px solid var(--primary-color)">
+        <div class="container">
+            <p class="mb-0 small">&copy; 2026 Namutek Logistics Ltd. All Rights Reserved. Professional Freight Systems.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/260976699145?text=Hello%20Namutek%20Logistics,%20I%20would%20like%20to%20inquire%20about%20your%20services." class="whatsapp-float" target="_blank" rel="noopener noreferrer" title="Chat with us on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const searchBox = document.getElementById("searchBox");
+            const bookItems = document.querySelectorAll(".book-item");
+            const contactForm = document.getElementById("contactForm");
+
+            // Real-Time Smooth Catalog Search Engine
+            searchBox.addEventListener("keyup", () => {
+                const filter = searchBox.value.toLowerCase().trim();
+
+                bookItems.forEach(item => {
+                    const text = item.innerText.toLowerCase();
+                    if (text.includes(filter)) {
+                        item.style.display = "block";
+                    } else {
+                        item.style.display = "none";
+                    }
+                });
+            });
+
+            // Fixed Form UX Feedback Loop Interceptor
+            if(contactForm) {
+                contactForm.addEventListener("submit", function(e) {
+                    const btn = this.querySelector("button[type='submit']");
+                    const initialText = btn.innerText;
+                    btn.innerText = "Sending...";
+                    btn.disabled = true;
+
+                    // Allows formsubmit.co handler to intercept after providing dynamic visual UX feedback
+                    setTimeout(() => {
+                        btn.innerText = initialText;
+                        btn.disabled = false;
+                    }, 2000);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
